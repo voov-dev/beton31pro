@@ -1,4 +1,5 @@
 import FormsValidate from './form-validate';
+import {onFeedbackFormSubmit} from './init-feedback-submit';
 const formWrappers = document.querySelectorAll('[data-validate]');
 
 const resetForm = (form) => {
@@ -41,6 +42,9 @@ const callbacks = {
   customExample: {
     validationSuccessCallback: customExampleValidationSuccessCallback,
     validationErrorCallback: customExampleValidationErrorCallback,
+  },
+  feedbackFormSubmit: {
+    validationSuccessCallback: onFeedbackFormSubmit,
   },
 };
 

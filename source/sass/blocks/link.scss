@@ -1,0 +1,20 @@
+.link {
+  transition: color $trans-default;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+
+  @include has-hover {
+    color: $color-nero-50;
+  }
+
+  &--dark {
+    @include has-hover {
+      color: $color-nero;
+    }
+  }
+
+  &--disabled {
+    color: $color-nero-50;
+    pointer-events: none;
+  }
+}

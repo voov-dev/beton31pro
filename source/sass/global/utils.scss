@@ -1,6 +1,5 @@
 .wrapper {
   position: relative;
-
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -13,7 +12,34 @@
   }
 
   main {
+    position: relative;
     flex-grow: 1;
+    transform: translateX(0);
+    transition: transform $trans-1000;
+
+    @include vp-767 {
+      transform: none;
+    }
+  }
+}
+
+.page-overlay {
+  position: absolute;
+  z-index: 3;
+  // top: var(--header-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: calc(100% - #{var(--header-height)});
+  background: $color-default-black;
+  opacity: 0;
+  transition: opacity $trans-600;
+  cursor: pointer;
+  pointer-events: none;
+
+  .is-menu-active & {
+    opacity: 0.5;
+    pointer-events: auto;
   }
 }
 
@@ -64,4 +90,15 @@
 .no-transition {
   /* stylelint-disable-next-line */
   transition: none !important;
+}
+
+[class*="ymaps-2"][class*="-ground-pane"] {
+  filter: invert(90%) grayscale(100%) sepia(1) brightness(120%)
+    hue-rotate(184deg) saturate(250%);
+}
+
+[class*="ymaps-2"] {
+  @include vp-767 {
+    touch-action: auto;
+  }
 }

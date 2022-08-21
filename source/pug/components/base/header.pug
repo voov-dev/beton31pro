@@ -1,36 +1,63 @@
-mixin header(headerMods, currentUrl)
+mixin header(headerMods, currentUrl, headerActivePage)
   -
-    const headerLinks = [
+    const headerItems = [
       {
-        href: "index.html",
-        text: "Главная"
+        title: 'Главная',
+        href: 'index.html',
       },
       {
-        href: "#",
-        text: "Страница 2"
+        title: 'Бетон',
+        href: 'article.html',
       },
       {
-        href: "#",
-        text: "Страница 3"
+        title: 'Цементный раствор',
+        href: '#',
+      },
+      {
+        title: 'Керамзитобетон',
+        href: '#',
+      },
+      {
+        title: 'Прайс-лист',
+        href: 'news.html',
+      },
+      {
+        title: 'Контакты',
+        href: 'contacts.html',
       },
     ]
 
   header.header(class=headerMods)
-    .container
-      if(currentUrl === "index.html")
+    .header__inner(data-fix-block)
+      if (currentUrl === "index.html")
         //- lighthouse снимает 10 баллов SEO за <a> без href
-        span.header__logo Логотип
+        span.header__logo
+          +icon('logo', 128, 40, true)(role="img" aria-label="Логотип ООО «Монолит»")
       else
-        a.header__logo(href="index.html", aria-label="Переход на главную") Логотип
-      nav.main-nav
-        button.main-nav__toggle.btn-reset(type="button", aria-label="Переключатель отображения меню", aria-pressed="false")
-          +icon("icon-burger", 20, 20)
-        .main-nav__wrapper
+        a.header__logo(href="index.html", aria-label="Переход на главную")
+          +icon('logo', 128, 40, true)(role="img" aria-label="Логотип ООО «Монолит»")
+
+      if headerActivePage
+        .header__active
+          +icon('arrow-right', 24, 24)
+          span.caps-12.header__active-title!=headerActivePage
+
+      .header__menu-wrp
+        .header__menu-toggle-wrp
+          button.header__menu-toggle.btn-reset(type="button", aria-pressed="false" data-menu-btn)
+            span.caps-12.header__toggle-title Меню
+
+    nav.main-nav.header__menu
+      .main-nav__wrapper
+        .container
           ul.main-nav__list
-            each link in headerLinks
-              - const activeState = currentUrl === link.href
-              li.main-nav__item
+            each item in headerItems
+              - const activeState = currentUrl === item.href
+              li.heading-3-caps.main-nav__item
                 if(activeState)
-                  span.main-nav__link.is-active=link.text
+                  span.main-nav__link.link.is-active=item.title
                 else
-                  a.main-nav__link(href=link.href)=link.text
+                  a.main-nav__link.link(href=item.href)=item.title
+
+          .main-nav__download-link
+            +link-download({name: "Скачать прайс-лист", href: "./lsx/monolitPrice.lsx", ext: "lsx", size: "340 kb"})

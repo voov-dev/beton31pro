@@ -10,12 +10,28 @@
 // }
 
 @font-face {
+  font-family: "Grandis Extended";
+  src: url("../fonts/grandis-extended-bold.woff2") format("woff2"),
+    url("../fonts/grandis-extended-bold.woff") format("woff");
+  font-weight: bold;
   font-style: normal;
-  font-weight: 400;
-  font-family: "";
-
   font-display: swap;
-  src:
-    url("../fonts/.woff2") format("woff2"),
-    url("../fonts/.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Grandis Extended";
+  src: url("../fonts/grandis-extended-medium.woff2") format("woff2"),
+    url("../fonts/grandis-extended-medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Grandis Extended";
+  src: url("../fonts/grandis-extended-regular.woff2") format("woff2"),
+    url("../fonts/grandis-extended-regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }

@@ -1,0 +1,48 @@
+-
+  const jobSliderData = {
+    title: '3 причины выбрать именно нас',
+    slides: [
+      {
+        img: ["content/feature-slider", "1", "jpg", 1440, 764, ""],
+        description: 'Ваш будущий бетон производим на заводах ELKON&nbsp;QUICK&nbsp;MASTER&nbsp;60.',
+        user: {
+          name: `Первоклассные заводы`,
+          position: 'Ваш будущий бетон производим на заводах ELKON QUICK MASTER 60.',
+        },
+      },
+      {
+        img: ["content/feature-slider", "2", "jpg", 1440, 764, ""],
+        description: 'Мы используем качественные инертные материалы,<br/> а Вы получаете 100%&nbsp;гарантию заявленной марке&nbsp;прочности.',
+        user: {
+          name: `Качественные материалы`,
+          position: 'Мы используем качественные инертные материалы, а Вы получаете 100% гарантию заявленной марке прочности',
+        },
+      },
+      {
+        img: ["content/feature-slider", "3", "jpg", 1440, 764, ""],
+        description: 'Доставка с нашего ближайшего завода. Минимальное время в пути, что позволит сохранить на 100%&nbsp;прочность бетона.',
+        user: {
+          name: `Быстрая доставка`,
+          position: 'Доставка с нашего ближайшего завода. Минимальное время в пути, что позволит сохранить на 100% прочность бетона.',
+        },
+      },
+    ],
+  }
+
+mixin img-slider(props)
+  section.img-slider(data-job-slider-container)&attributes(attributes)
+    .img-slider__wrapper(data-sal="mask-to-right")
+      h2.img-slider__title.caps-12(data-sal="slide-up", data-sal-delay="400") !{props.title}
+      .swiper(data-job-slider, data-delay="750", data-speed="10000")
+        .swiper-wrapper
+          each slide in props.slides
+            .swiper-slide.img-slider__slide
+              .img-slider-item(data-swiper-parallax="100%")
+                .img-slider-item__image-wrapper(data-slider-img)
+                  +picture(...slide.img)
+                .img-slider-item__content(data-sal="slide-up", data-sal-delay="400")
+                  p.img-slider-item__description.heading-3 !{slide.description}
+                  +user-card(slide.user).img-slider-item__user-card.user-card--light
+
+        .img-pagination(data-sal="fade", data-sal-delay="400" data-pagination)
+

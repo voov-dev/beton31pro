@@ -1,0 +1,9 @@
+.text-block {
+  font-size: size(14px);
+  line-height: size(22px);
+  margin: 0;
+}
+
+.text-block:not(:last-child) {
+  margin-bottom: size(22px);
+}

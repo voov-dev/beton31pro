@@ -1,0 +1,5 @@
+mixin text-block(data)
+  if data.type === "subtitle"
+    h2!=data.content
+  if data.type === "text"
+    p.text-block!=data.content

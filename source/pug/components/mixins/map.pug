@@ -1,0 +1,7 @@
+mixin map(props={})
+  - const latitude = props.latitude ? props.latitude : '55.74896956898905'
+  - const longitude = props.longitude ? props.longitude : '37.607592'
+  - const map = props.map ? props.map : 'moscow'
+
+  .map&attributes(attributes)
+    .map__inner(data-icon-pin="img/svg/custom-marker.svg", data-map-place-cords=`${latitude}, ${longitude}`, data-map=map )

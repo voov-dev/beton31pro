@@ -1,0 +1,80 @@
+-
+  const contactsCityData = {
+    header: {
+      headerDesc: "Контакты",
+      headerMob: "Контакты",
+      titleDesc: "2 завода в Белгородской области,<br> выберите ближайший:",
+      titleMob: "2 завода в Белгородской области,<br> выберите ближайший:",
+      textDesc: "Будем рады рассказать вам о&nbsp;деятельности компании больше по&nbsp;телефону или при личной встрече в&nbsp;наших офисах.",
+      textMob: "Будем рады рассказать вам о&nbsp;деятельности компании больше по&nbsp;телефону или при личной встрече в&nbsp;наших офисах.",
+    },
+    tabs: {
+      controls: [
+        {
+          text: 'Шебекинский район, село Вознесеновка',
+          isActive: true,
+          city: 'shbk',
+        },
+        {
+          text: 'Валуйский район, село Солоти',
+          city: 'val',
+        },
+      ],
+      content: [
+        {
+          isActive: true,
+          video: {
+            name: 'shbk',
+            format: 'mp4',
+          },
+          map: {
+            name: 'shbk',
+            latitude: '50.418448',
+            longitude: '37.033479',
+          },
+          name: 'Шебекинский район',
+          id: '524901',
+          phone: {
+            title: 'Телефон',
+            text: '+7 495 647 55 55',
+            href: 'tel:+74956475555',
+          },
+          address: {
+            title: 'Адрес',
+            text: '<br/>309259, Шебекинский район, село&nbsp;Вознесеновка, улица&nbsp;Терешковой&nbsp;1а'
+          },
+          time: '',
+          temperature: '',
+        },
+        {
+          video: {
+            name: 'val',
+            format: 'mp4',
+          },
+          map: {
+            name: 'val',
+            latitude: '50.280815',
+            longitude: '38.049096',
+          },
+          name: 'Валуйский район',
+          id: '2025339',
+          phone: {
+            title: 'Телефон',
+            text: '+7 495 647 55 55',
+            href: 'tel:+74956475555',
+          },
+          address: {
+            title: 'Адрес',
+            text: '<br/>309981, Валуйский&nbsp;район, село&nbsp;Солоти',
+          },
+          time: '',
+          temperature: '',
+        },
+      ],
+    },
+  }
+
+
+mixin contacts-city(props)
+  section.contacts-city&attributes(attributes)
+    +city-tabs(props).contacts-city__tabs

@@ -1,0 +1,47 @@
+mixin city-tabs(props)
+  .city-tabs(data-city-tabs, data-tabs=props.tabs.dataTabs ? 'parent' : null)&attributes(attributes)
+    if props.header
+      +section-header(props.header)(data-city-header)
+    .city-tabs__controls(data-city-controls, data-tabs=props.tabs.dataTabs ? 'controls' : null)
+      each button in props.tabs.controls
+        button.caps-12.city-tabs__nav-button(class=button.isActive ? "is-active" : null, data-city-nav=button.city ? button.city : null, data-tabs=props.tabs.dataTabs ? 'control' : null)
+          span !{button.text}
+          if button.time
+            span.city-tabs__detailed-time(data-city-detailed-full) !{button.time}
+    .city-tabs__content(data-tabs=props.tabs.dataTabs ? 'content' : null)
+      each city in props.tabs.content
+        .city-item(class=city.isActive ? "is-active" : null, data-sal="mask-to-right", data-city-item=city.map.name, data-city-id=city.id, data-tabs=props.tabs.dataTabs ? 'element' : null)
+          .city-item__video-wrapper
+            video(preload="auto", data-city-video, muted, playsinline, loop, data-src=`video/${city.video.name}.${city.video.format}`)
+          .city-item__content(data-city-content)
+            p.caps-12.city-item__title !{city.name}
+            .city-item__contacts
+              if city.phone.title
+                span.city-item__contact-item Телефон
+              a.heading-2-caps.city-item__phone(href=city.phone.href) !{city.phone.text}<br/>
+              a.heading-2-caps.city-item__phone(href=city.phone.href) !{city.phone.text}
+              if city.workingHours
+                p.text-14.city-item__working-hours !{city.workingHours}
+              if city.email
+                if city.email.title
+                  span.city-item__contact-item Email
+                a.text-14.city-item__email(href=city.email.href) !{city.email.text}
+              if city.address.title
+                span.city-item__contact-item Адрес
+              a.text-14.city-item__address(href="#", data-city-location) !{city.address.text}
+            .city-item__footer
+              if city.time
+                span.caps-12.city-item__time(data-city-time) !{city.time}
+              if city.temperature
+                span.caps-12.city-item__temperature
+                  span(data-city-temperature) !{city.temperature}
+                  span &deg;C
+          .city-item__map
+            +map({
+              latitude: city.map.latitude,
+              longitude: city.map.longitude,
+              map: city.map.name,
+            })
+          button.city-item__button-location(type="button", data-city-location, aria-label="переключатель карты")
+            +icon('icon-marker', 20, 20)
+            +icon('icon-close-modal', 20, 20)

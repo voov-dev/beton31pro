@@ -1,10 +1,50 @@
-mixin intro()
-  .intro
-    //- вставлять блоки во внешний контейнер неверно
-    //- все блоки содержат в себе container без доп класса tutorial__wrapper
-    .container
-      p(style="margin-top: 40px;") Текст&nbsp;с&nbsp;мнемониками
+-
+  const indexIntro = {
+    titleDesc: "Купите Бетон с нашего ближайшего завода!",
+    titleMob: "Купите Бетон с нашего ближайшего завода!",
+    headerDesc: "Продажа и доставка <br/>от производителя",
+    headerMob: "Продажа и доставка <br/>от производителя",
+    img: ['content/intro', 'index-intro', 'jpg', 1440, 900, 'Продажа и доставка бетона и смесей от производителя'],
+    id: "intro-scroll-target",
+    factsList: [
+      {
+        totalMini: 'Первоклассные заводы',
+        details: 'Ваш будущий бетон производим на заводах ELKON&nbsp;QUICK&nbsp;MASTER&nbsp;60',
+        statistic: false,
+      },
+      {
+        totalMini: 'Качественные материалы',
+        details: 'Мы используем качественные инертные материалы, <br/>а Вы получаете 100% гарантию заявленной марке прочности',
+        statistic: false,
+      },
+    ],
+  }
 
-      p(style="margin-top: 40px;") Пример использования +img()
-      p(style="margin-bottom: 40px;")
-        +img("content", "placeholder", "png", 120, 120, "Пример")
+mixin intro(data)
+  .intro
+    .intro__scroll-target(id=`${data.id}`)
+    .container
+      if data.img
+        .intro__img-wrp
+          +picture(...data.img)
+      .intro__inner
+        .intro__titles-wrp
+          if (data.titleDesc && data.titleMob)
+            h2.text-14.intro__title.intro__title--desc!=data.titleDesc
+            h2.text-14.intro__title.intro__title--mob!=data.titleMob
+          else if data.title
+            h2.text-14.intro__title!=data.title
+
+          if (data.headerDesc && data.headerMob)
+            p.intro__header-wrp(data-sal="slide-up" data-words-animation)
+              span.heading-72.intro__header.intro__header--desc!=data.headerDesc
+              span.heading-72.intro__header.intro__header--mob!=data.headerMob
+          else if data.header
+            p.heading-72.intro__header!=data.header
+
+        if data.factsList
+          .intro__info
+            +fact-item(data.factsList[0]).fact-item--white
+            +fact-item(data.factsList[1]).fact-item--white
+
+        +scroll-btn().intro__scroll-btn(data-target=`#${data.id}`)

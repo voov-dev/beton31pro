@@ -123,7 +123,7 @@
     bottom: 0;
     left: 0;
 
-    color: $color-torch-red;
+    // color: $color-torch-red;
 
     opacity: 0;
 
@@ -204,11 +204,11 @@
     }
 
     .custom-select__button {
-      border: 2px solid $color-torch-red;
+      // border: 2px solid $color-torch-red;
 
       &:focus,
       &:hover {
-        border: 2px solid rgba($color-torch-red, 0.5);
+        // border: 2px solid rgba($color-torch-red, 0.5);
       }
     }
   }

@@ -2,15 +2,17 @@
 // ---------------------------------
 
 @import "vendor/normalize";
-// Swiper 7.4.1
-// @import "vendor/swiper";
+@import "vendor/swiper";
+@import "vendor/sal";
 
 // Global
 // ---------------------------------
 
 @import "variables";
+@import "keyframes";
 @import "mixins";
 @import "functions";
+@import "typography";
 @import "global/fonts";
 @import "global/reboot";
 @import "global/utils";
@@ -27,6 +29,40 @@
 @import "blocks/custom-input";
 @import "blocks/custom-toggle";
 @import "blocks/custom-select";
+@import "blocks/text-block";
+@import "blocks/text-list";
+@import "blocks/new-content";
+@import "blocks/page-404";
+@import "blocks/rotate";
+@import "blocks/scroll-btn";
+@import "blocks/fact-item";
+@import "blocks/section-intro";
+@import "blocks/section-header";
+@import "blocks/section-title";
+@import "blocks/section-description";
+@import "blocks/section-slider";
+@import "blocks/intro";
+@import "blocks/user-card";
+@import "blocks/img-slider-item";
+@import "blocks/img-slider";
+@import "blocks/after-sticky-intro";
+@import "blocks/about-facts";
+@import "blocks/contacts-city";
+@import "blocks/map";
+@import "blocks/map-business";
+@import "blocks/map-geography";
+@import "blocks/city-item";
+@import "blocks/city-tabs";
+@import "blocks/contacts-city";
+@import "blocks/table";
+@import "blocks/resources";
+@import "blocks/link";
+@import "blocks/link-arrow";
+@import "blocks/link-download";
+@import "blocks/running-line";
+@import "blocks/tabs/data-tabs";
+@import "blocks/accordion/accordion";
+@import "blocks/accordion/data-accordion.scss";
 
 // ---------------------------------
 

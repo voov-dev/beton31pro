@@ -1,0 +1,22 @@
+
+
+mixin section-description(props)
+  section.section-description&attributes(attributes)(data-description="section")
+    .container
+      .section-description__title-wrapper
+        if props.title
+          h2.caps-12.section-description__title !{props.title}
+        if props.titleDesc
+          h2.caps-12.section-description__title.section-description__title--desc !{props.titleDesc}
+        if props.titleMob
+          h2.caps-12.section-description__title.section-description__title--mob !{props.titleMob}
+      .section-description__text-wrapper.text-14(data-description="content")
+        if props.text.length > 1
+          p(data-description="text") !{props.text[0]}
+          - for (let i = 1; i < props.text.length; i++)
+            p(data-description="text").is-hidden !{props.text[i]}
+          button.caps-12.section-description__button-text.is-hidden(data-description="button")
+            +icon('icon-plus', 16, 16)
+            span Подробнее
+        else
+          p !{props.text[0]}

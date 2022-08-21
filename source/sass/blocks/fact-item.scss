@@ -1,0 +1,160 @@
+.fact-item {
+  $root: &;
+
+  position: relative;
+  flex-grow: 1;
+
+  padding: size(40px) size(48px);
+  width: 30%;
+  min-width: size(341px);
+
+  border-right: size(1px) solid $color-nero-10;
+
+  @include vp-1439 {
+    min-width: 341px;
+
+    padding: 40px 48px 48px;
+  }
+
+  @include vp-1279 {
+    padding: 40px;
+  }
+
+  @include vp-1023 {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    width: 100%;
+    min-width: auto;
+
+
+    &:last-of-type {
+      padding-bottom: 48px;
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  @include vp-767 {
+    padding: 24px 16px 25px;
+    height: auto;
+
+    &:last-of-type {
+      padding-bottom: 64px;
+    }
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: size(1px);
+
+    background-color: $color-nero-10;
+
+    @include vp-3199 {
+      height: 1px;
+    }
+
+    @include vp-1439 {
+      bottom: 0px;
+      height: 1px;
+    }
+  }
+
+  &__title {
+    margin-top: 0;
+    margin-bottom: 0;
+
+    @include vp-767 {
+      font-size: 32px;
+      line-height: 32px;
+    }
+  }
+
+  &__description {
+    margin-top: size(8px);
+    margin-bottom: auto;
+
+    color: $color-nero-50;
+
+    .des-hidden {
+      display: none;
+
+      @include vp-767 {
+        display: inline;
+      }
+    }
+
+    @include vp-1439 {
+      margin-top: 8px;
+    }
+
+    @include vp-1023 {
+      .mob-hidden {
+        display: none;
+      }
+    }
+
+    @include vp-767 {
+      margin-bottom: -7px;
+    }
+  }
+
+  &__statistic {
+    margin-top: size(64px);
+    margin-bottom: 0;
+    padding-left: 0;
+
+    list-style: none;
+
+    @include vp-1439 {
+      margin-top: 64px;
+    }
+
+    @include vp-767 {
+      margin-top: auto;
+    }
+  }
+
+  &--statistic {
+    padding-bottom: size(49px);
+
+    @include vp-1439 {
+      padding-bottom: 49px;
+    }
+
+    .fact-item__title {
+      max-width: size(352px);
+
+      @include vp-1439 {
+        max-width: 352px;
+      }
+    }
+
+    .fact-item__description {
+      max-width: size(352px);
+
+      @include vp-1439 {
+        max-width: 352px;
+      }
+
+      @include vp-767 {
+        margin-top: 12px;
+      }
+    }
+  }
+
+  &--white {
+    color: $color-default-white;
+
+    #{$root}__description {
+      color: $color-default-white;
+    }
+  }
+}

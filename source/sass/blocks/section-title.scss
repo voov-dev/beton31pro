@@ -1,0 +1,152 @@
+.section-title {
+  max-width: size(1440px);
+
+  @include vp-1439 {
+    max-width: 1440px;
+  }
+
+  &--business {
+    max-width: 65%;
+
+    @include vp-767 {
+      max-width: 100%;
+    }
+  }
+
+  // &--agro {
+  //   max-width: 60%;
+
+  //   @include vp-767 {
+  //     max-width: 100%;
+  //   }
+  // }
+
+  &--desk {
+    @include vp-767 {
+      display: none;
+    }
+  }
+
+  &--mob {
+    display: none;
+
+    @include vp-767 {
+      display: inline;
+    }
+  }
+
+  &__header {
+
+    margin: 0 0 size(29px);
+
+    @include vp-1439 {
+      margin: 0 0 29px;
+    }
+
+    @include vp-1023 {
+      margin: 0 0 24px;
+    }
+
+    @include vp-767 {
+      margin: 0 0 19px;
+    }
+  }
+
+  h1 {
+    display: none;
+
+    @include vp-767 {
+      display: block;
+    }
+  }
+
+  &__info {
+    margin: 0;
+    text-transform: uppercase;
+    hyphens: manual;
+  }
+
+  h1 ~ .section-title__info {
+    font-weight: 500;
+    font-size: size(48px);
+    line-height: size(64px);
+
+    @include vp-1439 {
+      font-size: 48px;
+      line-height: 64px;
+    }
+
+    @include vp-1023 {
+      font-size: 32px;
+      line-height: 48px;
+    }
+
+    @include vp-767 {
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+
+  h2 ~ .section-title__info {
+    font-weight: 500;
+    font-size: size(34px);
+    line-height: size(44px);
+
+    @include vp-1439 {
+      font-size: 34px;
+      line-height: 44px;
+    }
+
+    @include vp-1023 {
+      font-size: 28px;
+      line-height: 40px;
+    }
+
+    @include vp-767 {
+      font-size: 20px;
+      line-height: 27px;
+    }
+  }
+
+  &__blue-word,
+  b {
+    color: $color-mariner;
+    font-weight: 500;
+  }
+
+  &__desktop-hidden {
+    display: none;
+
+    @include vp-767 {
+      display: inline;
+    }
+  }
+
+  &__mobile-hidden {
+    display: inline;
+
+    @include vp-767 {
+      display: none;
+    }
+  }
+
+  &__320-hidden {
+    display: inline;
+
+    @include vp-374 {
+      display: none;
+    }
+  }
+
+  &__320-show {
+    display: none;
+
+    @include vp-374 {
+      display: inline;
+    }
+  }
+
+  [data-words-animation].sal-animate .char {
+    vertical-align: -5px;
+  }
+}

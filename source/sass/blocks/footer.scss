@@ -1,5 +1,265 @@
 .footer {
-  padding: 40px 0;
+  background-color: $color-bridal-heath;
+  transform: translateX(0);
+  transition: transform $trans-1000;
 
-  background-color: $color-neon-blue;
+  &__inner {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    padding: 0 0 0 25vw;
+
+    @include vp-1023 {
+      padding: 0;
+    }
+  }
+
+  &__img-wrp {
+    position: absolute;
+    top: 0;
+    left: 0;
+    flex-shrink: 0;
+    width: 25vw;
+    height: 100%;
+    overflow: hidden;
+    // height: 20.5vw;
+    // aspect-ratio: 361 / 295;
+
+    @include vp-1023 {
+      display: none;
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__img-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24%;
+    height: auto;
+  }
+
+  &__info {
+    flex-grow: 2;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    // height: 50%;
+    padding: size(48px) 0;
+    border-bottom: size(1px) solid $color-nero-10;
+
+    @include vp-1439 {
+      padding: 48px 0;
+      border-bottom-width: 1px;
+    }
+
+    @include vp-1279 {
+      padding: 24px 0;
+    }
+
+    @include vp-1023 {
+      display: none;
+    }
+
+    .container {
+      @include vp-1279 {
+        padding: 0 48px 0 24px;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 75%;
+    margin: size(-2px) size(-12px) size(-10px) size(-6px);
+    padding: 0;
+    list-style: none;
+
+    @include vp-1439 {
+      margin: -2px -12px -10px -6px;
+    }
+
+    @include vp-1279 {
+      width: auto;
+    }
+  }
+
+  &__item {
+    margin: 0 size(12px) size(10px) 0;
+
+    @include vp-1439 {
+      margin: 0 12px 10px 0;
+    }
+  }
+
+  &__nav-link {
+    padding: size(6px);
+
+    @include vp-1439 {
+      padding: 6px;
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    align-items: center;
+    // height: 50%;
+    padding: size(48px) 0;
+    border-bottom: size(1px) solid $color-nero-10;
+
+    @include vp-1439 {
+      padding: 48px 0;
+      border-bottom-width: 1px;
+    }
+
+    @include vp-1279 {
+      padding: 24px 0;
+    }
+
+    @include vp-1023 {
+      height: auto;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+
+      @include vp-1279 {
+        padding: 0 48px 0 24px;
+      }
+
+      @include vp-1023 {
+        padding: 0 24px;
+      }
+
+      @include vp-767 {
+        padding: 0 16px;
+      }
+    }
+
+    .link-download {
+      margin: 0 0 0 auto;
+
+      @include vp-1023 {
+        margin: 0;
+      }
+    }
+  }
+
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-shrink: 0;
+    margin: 0 6.5% 0 0;
+
+    @include vp-1279 {
+      margin: 0 5% 0 0;
+    }
+
+    @include vp-1023 {
+      display: none;
+    }
+  }
+
+  &__contact-title {
+    color: $color-nero-50;
+  }
+
+  &__contact-link {
+    font-weight: 500;
+  }
+
+  &__bottom {
+    padding: size(32px) 0;
+
+    @include vp-1439 {
+      padding: 32px 0;
+    }
+
+    @include vp-767 {
+      padding: 24px 0;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      @include vp-767 {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  }
+
+  &__copyright {
+    display: block;
+    margin: 0 size(24px) 0 0;
+    color: $color-nero-50;
+
+    @include vp-767 {
+      margin: 0 0 -2px;
+    }
+  }
+
+  &__development {
+    // display: flex;
+
+    @include vp-767 {
+      display: block;
+    }
+  }
+
+  &__development-text {
+    display: inline;
+    margin-right: size(4px);
+    color: $color-nero-50;
+
+    @include vp-1439 {
+      margin-right: 4px;
+    }
+  }
+
+  &__development-link {
+    display: inline;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    background: $color-default-black;
+    opacity: 0;
+    transition: opacity $trans-600;
+    pointer-events: none;
+    cursor: pointer;
+
+    @include vp-767 {
+      display: none;
+    }
+  }
+
+  .is-menu-active & {
+    &::before {
+      opacity: 0.5;
+      pointer-events: auto;
+    }
+  }
 }

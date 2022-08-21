@@ -1,0 +1,198 @@
+.number-120 {
+  font-weight: 500;
+  font-size: size(120px);
+  line-height: size(120px);
+  text-transform: uppercase;
+
+  @include vp-1439 {
+    font-size: 120px;
+    line-height: 120px;
+  }
+
+  @include vp-767 {
+    font-size: 38px;
+    line-height: 38px;
+  }
+}
+
+.heading-72 {
+  font-weight: 500;
+  font-size: size(72px);
+  line-height: size(90px);
+  text-transform: uppercase;
+
+  @include vp-1439 {
+    font-size: 72px;
+    line-height: 90px;
+  }
+
+  @include vp-1023 {
+    font-size: 48px;
+    line-height: 64px;
+  }
+
+  @include vp-767 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+.heading-1-caps {
+  font-weight: 500;
+  font-size: size(48px);
+  line-height: size(64px);
+  text-transform: uppercase;
+
+  @include vp-1439 {
+    font-size: 48px;
+    line-height: 64px;
+  }
+
+  @include vp-767 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+.heading-2-caps {
+  font-weight: 500;
+  font-size: size(34px);
+  line-height: size(44px);
+  text-transform: uppercase;
+
+  @include vp-1439 {
+    font-size: 34px;
+    line-height: 44px;
+  }
+
+  @include vp-1023 {
+    font-size: 24px;
+    line-height: 34px;
+  }
+
+  @include vp-767 {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
+.heading-2 {
+  font-weight: 400;
+  font-size: size(34px);
+  line-height: size(44px);
+
+  @include vp-1439 {
+    font-size: 34px;
+    line-height: 44px;
+  }
+
+  @include vp-1023 {
+    font-size: 24px;
+    line-height: 34px;
+  }
+
+  @include vp-767 {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
+.heading-3-caps {
+  font-weight: 500;
+  font-size: size(24px);
+  line-height: size(34px);
+  text-transform: uppercase;
+
+  @include vp-1439 {
+    font-size: 24px;
+    line-height: 34px;
+  }
+
+  @include vp-767 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+.heading-3 {
+  font-weight: 500;
+  font-size: size(24px);
+  line-height: size(34px);
+
+  @include vp-1439 {
+    font-size: 24px;
+    line-height: 34px;
+  }
+
+  @include vp-1023 {
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  @include vp-767 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+.heading-4 {
+  font-weight: 400;
+  font-size: size(18px);
+  line-height: size(24px);
+
+  @include vp-1439 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  @include vp-767 {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+.text-18 {
+  font-weight: 400;
+  font-size: size(18px);
+  line-height: size(28px);
+
+  @include vp-1439 {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
+
+.heading-5 {
+  font-weight: 500;
+  font-size: size(16px);
+  line-height: size(22px);
+
+  @include vp-1439 {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+.text-14 {
+  font-weight: 400;
+  font-size: size(14px);
+  line-height: size(22px);
+
+  @include vp-1439 {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
+
+.caps-12 {
+  font-weight: 500;
+  font-size: size(12px);
+  line-height: size(18px);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+
+  @include vp-1439 {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}

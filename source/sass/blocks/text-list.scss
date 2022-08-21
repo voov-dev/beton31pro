@@ -1,0 +1,39 @@
+.text-list {
+  margin-bottom: size(48px);
+
+  & p {
+    margin-top: 0;
+    margin-bottom: size(32px);
+  }
+
+  &__list {
+    margin: 0;
+    padding-left: size(15px);
+    list-style: none;
+
+    @include vp-767 {
+      padding-left: 14px;
+    }
+  }
+
+  &__item {
+    position: relative;
+    margin-bottom: size(16px);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &::before {
+      position: absolute;
+      display: block;
+      content: "";
+      width: size(6px);
+      height: size(6px);
+      left: size(-15px);
+      top: size(8px);
+      background-color: $color-mariner;
+      border-radius: 50%;
+    }
+  }
+}

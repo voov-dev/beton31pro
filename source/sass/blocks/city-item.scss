@@ -1,0 +1,373 @@
+.city-item {
+  position: relative;
+  width: 50%;
+  flex-grow: 1;
+
+  overflow: hidden;
+
+  @include vp-767 {
+    position: static;
+    width: 100%;
+
+    opacity: 1;
+    visibility: hidden;
+    max-height: 0;
+
+    transition: opacity 0.3s ease-in, visibility 0.3s ease-in;
+
+    &.sal-animate {
+      animation: none;
+    }
+
+    &.is-active {
+      opacity: 1;
+      visibility: visible;
+      max-height: 100%;
+
+      .city-item__video-wrapper {
+        opacity: 1;
+      }
+
+      .city-item__content {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__contact-item {
+    display: none;
+  }
+
+  &.is-hidden {
+    .city-item__content {
+      clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+    }
+
+    .city-item__video-wrapper {
+      clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+    }
+
+    .city-item__map {
+      visibility: visible;
+    }
+
+    .city-item__button-location {
+      svg {
+        &:first-of-type {
+          animation: fade-out 0.3s ease-in 0.2s both;
+        }
+
+        &:last-of-type {
+          animation: fade-in 0.5s ease-in 0.5s both;
+        }
+      }
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+
+    padding-top: size(40px);
+    padding-right: size(48px);
+    padding-bottom: size(48px);
+    padding-left: size(48px);
+
+    min-height: size(403px);
+    width: 100%;
+    transform: translateZ(0);
+    transition: clip-path 0.5s ease 0.2s, opacity 0.8s ease;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+
+    @include vp-1439 {
+      padding-top: 40px;
+      padding-right: 48px;
+      padding-bottom: 48px;
+      padding-left: 48px;
+
+      min-height: 403px;
+    }
+
+    @include vp-1023 {
+      padding-right: 24px;
+      padding-bottom: 24px;
+      padding-left: 24px;
+    }
+
+    @include vp-767 {
+      padding-right: 16px;
+      padding-bottom: 16px;
+      padding-left: 16px;
+
+      min-height: 258px;
+      opacity: 0;
+    }
+  }
+
+  &__video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: $color-lucky-point;
+
+    transition: clip-path 0.5s ease 0.2s;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 100%;
+
+      background-color: $color-midnight-express-70;
+    }
+
+    @include vp-767 {
+      opacity: 0;
+      transition: clip-path 0.5s ease 0.2s, opacity 0.8s ease;
+    }
+
+    video {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__title {
+    margin-top: 0;
+    margin-bottom: 0;
+
+    color: $color-default-white;
+
+    @include vp-767 {
+      display: none;
+    }
+  }
+
+  &__contacts {
+    margin-top: size(37px);
+    padding-left: size(6px);
+
+    max-width: 90%;
+
+    @include vp-1439 {
+      margin-top: 37px;
+      padding-left: 6px;
+    }
+
+    @include vp-767 {
+      margin-top: 0;
+      padding-left: 0;
+      max-width: 100%;
+    }
+  }
+
+  &__phone {
+    position: relative;
+
+    margin-bottom: size(16px);
+    color: $color-default-white;
+
+    transition: opacity $trans-default;
+
+    @include has-hover {
+      opacity: 0.5;
+    }
+
+    &::before {
+      content: attr(data-name);
+      position: absolute;
+      left: 0;
+      top: -20px;
+
+      font-size: 14px;
+      line-height: 22px;
+
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    @include vp-1439 {
+      margin-bottom: 16px;
+    }
+
+    @include vp-767 {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+
+  &__address {
+    position: relative;
+    margin-top: size(20px);
+    margin-bottom: 0;
+    color: $color-default-white;
+
+    transition: opacity $trans-default;
+
+    @include has-hover {
+      opacity: 0.5;
+    }
+
+    &::before {
+      content: attr(data-name);
+      position: absolute;
+      left: 0;
+      top: size(-20px);
+
+      font-size: size(14px);
+      line-height: size(22px);
+
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    @include vp-1439 {
+      margin-top: 20px;
+
+      &::before {
+        content: attr(data-name);
+        top: -20px;
+
+        font-size: 14px;
+        line-height: 22px;
+
+        opacity: 0.5;
+      }
+    }
+
+    @include vp-767 {
+      max-width: 90%;
+
+      br {
+        display: none;
+      }
+    }
+  }
+
+  &__footer {
+    margin-top: auto;
+  }
+
+  &__time {
+    margin-right: size(32px);
+    color: $color-default-white;
+  }
+
+  &__temperature {
+    color: $color-default-white;
+  }
+
+  &__button-location {
+    position: absolute;
+    z-index: 5;
+    bottom: size(48px);
+    right: size(48px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    width: size(48px);
+    height: size(48px);
+
+    color: $color-nero;
+
+    border: none;
+    border-radius: 50%;
+
+    transition: color $trans-default, background-color $trans-default;
+
+    cursor: pointer;
+
+    svg {
+      position: absolute;
+
+      &:first-of-type {
+        animation: fade-in 0.5s ease-in 0.2s both;
+      }
+
+      &:last-of-type {
+        opacity: 0;
+      }
+    }
+
+    @include vp-1439 {
+      bottom: 48px;
+      right: 48px;
+      width: 48px;
+      height: 48px;
+    }
+
+    @include vp-1023 {
+      bottom: 24px;
+      right: 24px;
+    }
+
+    @include vp-767 {
+      bottom: 16px;
+      right: 16px;
+    }
+
+    svg {
+      flex-shrink: 0;
+
+      width: size(20px);
+      height: size(20px);
+
+      @include vp-1439 {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    @media (hover: hover), screen and (min-width: 0\0) {
+      &:hover:not(.focus-visible),
+      &.focus-visible:focus {
+        color: $color-default-white;
+        background-color: $color-mariner;
+      }
+    }
+  }
+
+  &__map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+
+    opacity: 1;
+
+    overflow: hidden;
+
+    transition: visibility 0.8s ease-in;
+    visibility: hidden;
+
+    .map {
+      height: 100%;
+    }
+
+    .map__inner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: size(403px);
+      height: 100%;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+mixin team-slider(data, url)
+  .team-slider(data-team-url=url)
+    .team-slider__swiper.swiper
+      .team-slider__swiper-wrapper.swiper-wrapper
+        each slide in data
+          .team-slider__slide.swiper-slide(data-move-to=`#${slide.id}`)
+            .team-slider__slide-inner
+              .team-slider__slide-content-wrp
+                .team-slider__slide-img-wrp
+                  if (slide.imgFormat === "svg")
+                    +icon(slide.imgName, slide.imgWidth, slide.imgHeight)
+                  else
+                    +picture("slides/team", slide.imgName, slide.imgFormat, slide.imgWidth, slide.imgHeight, slide.imgAlt)
+                p.team-slider__slide-title
+                  span!=slide.title
+                  span!=slide.subtitle
+                p.team-slider__slide-desc!=slide.desc
+              .team-slider__slide-btn-wrp
+                +btn({text: "Подробнее"}).caps-12.team-slider__slide-btn
+                  +icon('icon-minus-16', 16, 16).team-slider__slide-btn-icon
+                  +icon('icon-minus-16', 16, 16)
+            .team-slider__pagination.nav-count(data-pagination-team)
+              span.nav-count__current
+              span.nav-count__del &nbsp;/&nbsp;
+              span.nav-count__total

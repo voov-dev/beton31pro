@@ -1,0 +1,19 @@
+mixin fact-item(props)
+  - const mod = props.mod ? props.mod : false;
+
+  .fact-item&attributes(attributes)(class=mod)
+    if props.total
+      p.heading-2-caps.fact-item__title(data-sal="slide-up", data-words-animation) !{props.total}
+
+    if props.totalMini
+      p.heading-3-caps.fact-item__title(data-sal="slide-up", data-words-animation) !{props.totalMini}
+
+    p.text-14.fact-item__description !{props.details}
+    if props.statisticData
+      ul.fact-item__statistic
+        each stat in props.statisticData
+          li.statistic-item
+            span.caps-12.statistic-item__property !{stat.property}
+            span.caps-12.statistic-item__value !{stat.value}
+            span.statistic-item__indication(data-sal="mask-to-right")
+              span(data-fact-percent=stat.percent)

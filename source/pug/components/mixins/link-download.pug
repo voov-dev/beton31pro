@@ -1,0 +1,10 @@
+mixin link-download(props)
+  - const { name, href, size, ext } = props
+
+  a.link-download&attributes(attributes)(href=href, download)
+    span.link-download__icon
+      +icon("icon-download", 20, 20)
+
+    span.link-download__text
+      span.caps-12.link-download__name !{ name }
+      span.text-14.link-download__info !{ ext }, !{ size }

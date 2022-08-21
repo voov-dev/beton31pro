@@ -1,0 +1,111 @@
+extends ../components/base/layout
+
+block variables
+  - const title = "Контакты - ООО «Монолит»" //- на страницах кроме главной используйте О нас — ProjectName
+  - const wrapperMods = ""
+  - const hasHeader = true
+  - const headerMods = "header--invert"
+  - const headerActivePage = "контакты"
+  - const hasFooter = true
+  - const footerMods = ""
+  - const currentUrl = "contacts.html" //- для остальных страниц пишем пустую строку или индекс активного headerLinks
+
+  -
+    const contactsData = {
+      header: {
+        header: "Контакты",
+        title: `2 завода в Белгородской области, <br/>выберите ближайший:`,
+      },
+    }
+
+  -
+    const contactsTabs = {
+      tabs: {
+        dataTabs: true,
+        controls: [
+          {
+            text: 'Шебекинский район',
+            isActive: true,
+            time: '16:28:23',
+            city: 'shbk',
+          },
+          {
+            text: 'Валуйский район',
+            time: '16:28:23',
+            city: 'val',
+          },
+        ],
+        content: [
+          {
+            isActive: true,
+            video: {
+              name: 'shbk',
+              format: 'mp4',
+            },
+            map: {
+              name: 'shbk',
+              latitude: '50.418448',
+              longitude: '37.033479',
+            },
+            name: 'Шебекинский район',
+            id: '524901',
+            phone: {
+              title: 'Телефон',
+              text: '+7 495 647 55 55',
+              href: 'tel:+74956475555',
+            },
+            workingHours: 'Понедельник&nbsp;&mdash; суббота, 7:00&nbsp;&mdash;&nbsp;20:00',
+            email: {
+              title: 'Email',
+              text: 'anma.80@mail.ru',
+              href: 'mailto:anma.80@mail.ru',
+            },
+            address: {
+              title: 'Адрес',
+              text: '<br/>309259, Шебекинский район, село&nbsp;Вознесеновка, улица&nbsp;Терешковой&nbsp;1а'
+            },
+            time: '',
+          },
+          {
+            video: {
+              name: 'val',
+              format: 'mp4',
+            },
+            map: {
+              name: 'val',
+              latitude: '50.280815',
+              longitude: '38.049096',
+            },
+            name: 'Валуйский район',
+            id: '2025339',
+            phone: {
+              title: 'Телефон',
+              text: '+7 495 647 55 55',
+              href: 'tel:+74956475555',
+            },
+            workingHours: 'Понедельник&nbsp;&mdash; суббота, 7:00&nbsp;&mdash;20:00',
+            email: {
+              title: 'Email',
+              text: 'anma.80@mail.ru',
+              href: 'mailto:anma.80@mail.ru',
+            },
+            address: {
+              title: 'Адрес',
+              text: '<br/>309981, Валуйский&nbsp;район, село&nbsp;Солоти',
+            },
+            time: '',
+          },
+        ],
+      },
+    }
+
+block main
+  main
+    .page-overlay(data-page-overlay)
+    +section-intro(contactsData.header).section-intro--contacts
+    +city-tabs(contactsTabs).city-tabs--contacts
+
+block modals
+
+block scripts
+  script(src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=a01f8dd2-d0ce-4dd5-a1b6-745f3a207777")

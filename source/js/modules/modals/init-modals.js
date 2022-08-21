@@ -1,4 +1,5 @@
 import {Modals} from './modals';
+import {modalVideoClose} from '../init-intro-video';
 
 let modals;
 
@@ -23,6 +24,16 @@ const settings = {
     eventTimeout: 400,
     openCallback: false,
     closeCallback: false,
+  },
+  'video': {
+    preventDefault: true,
+    stopPlay: true,
+    lockFocus: true,
+    startFocus: true,
+    focusBack: true,
+    eventTimeout: 400,
+    openCallback: false,
+    closeCallback: modalVideoClose,
   },
 };
 

@@ -1,0 +1,10 @@
+mixin gallery-slider (data, mod)
+  .slider-gallery(class=`slider-gallery--${mod}`, data-gallery-slider)
+      ul.slider-gallery__wrapper.swiper-wrapper
+        each it in data
+          li.slider-gallery__item.swiper-slide
+            .slider-gallery__img-content
+              +picture(it.path, it.image, it.format, it.width, it.height, it.alt)
+      .slider-gallery__control-wrapper
+        +slider-controls
+        .slider-gallery__pagination.swiper-pagination

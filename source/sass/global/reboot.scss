@@ -14,10 +14,10 @@ body {
 html {
   font-style: normal;
   font-weight: 400;
-  font-size: $fz-default;
-  line-height: 24px;
-  font-family: $ff-placeholder;
-  color: $color-default-black;
+  font-size: size-desktop($fz-default);
+  line-height: size(24px);
+  font-family: $ff-grandis-extended;
+  color: $color-nero;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -25,17 +25,34 @@ html {
   text-rendering: optimizeLegibility;
   // если по прежнему есть проблемы с выравниванием
   // https://transfonter.org/ - включите настройку https://prnt.sc/12rnt6g и переконвертируйте шрифт
+
+  -webkit-tap-highlight-color: transparent;
+
+  @include vp-1439 {
+    font-size: $fz-default;
+    line-height: 24px;
+  }
 }
 
 body {
+  --header-height: #{size(89px)};
+
   width: 100%;
   height: 100%;
 
-  background-color: $color-default-white;
+  background-color: $color-bridal-heath;
+
+  @include vp-1439 {
+    --header-height: 89px;
+  }
+
+  @include vp-767 {
+    --header-height: 73px;
+  }
 }
 
 a {
-  color: $color-default-black;
+  color: $color-nero;
   text-decoration: none;
 }
 
@@ -111,13 +128,7 @@ input[type="number"] {
 // ios button \ inputs reset
 select,
 textarea,
-input:matches([type="email"],
-  [type="number"],
-  [type="password"],
-  [type="search"],
-  [type="tel"],
-  [type="text"],
-  [type="url"]) {
+input:matches([type="email"], [type="number"], [type="password"], [type="search"], [type="tel"], [type="text"], [type="url"]) {
   appearance: none;
 }
 

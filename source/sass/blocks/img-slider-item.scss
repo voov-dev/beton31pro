@@ -1,0 +1,141 @@
+.img-slider-item {
+  width: 100%;
+  height: 100%;
+
+  position: relative;
+  display: flex;
+
+  overflow: hidden;
+
+  @include vp-767 {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  &__image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    @include vp-767 {
+      position: relative;
+      height: 375px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        135deg,
+        rgba(23, 33, 74, 1) 0%,
+        rgba(23, 33, 74, 1) 35%,
+        rgba(23, 33, 74, 0.25) 100%
+      );
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    position: relative;
+    margin-top: auto;
+    padding-top: size(80px);
+    padding-left: size(48px);
+    padding-bottom: size(48px);
+
+    max-width: size(830px);
+
+    @include vp-1439 {
+      padding-top: 80px;
+      padding-left: 48px;
+      padding-bottom: 48px;
+
+      max-width: 830px;
+    }
+
+    @include vp-1023 {
+      padding-left: 24px;
+      padding-bottom: 24px;
+
+      max-width: 544px;
+    }
+
+    @include vp-767 {
+      position: relative;
+      left: auto;
+      bottom: auto;
+
+      padding-top: 21px;
+      padding-right: 16px;
+      padding-bottom: 32px;
+      padding-left: 16px;
+
+      max-width: 100%;
+
+      background-color: $color-bridal-heath;
+    }
+  }
+
+  &__description {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: $color-default-white;
+
+    @include vp-767 {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 22px;
+
+      color: $color-nero;
+    }
+  }
+
+  &__user-card {
+    margin-top: size(48px);
+
+    @include vp-1439 {
+      margin-top: 48px;
+    }
+
+    @include vp-767 {
+      margin-top: 62px;
+    }
+
+    .user-card__name {
+      font-weight: 500;
+      font-size: size(16px);
+      line-height: size(22px);
+      color: $color-default-white;
+
+      @include vp-1439 {
+        font-size: 16px;
+        line-height: 22px;
+      }
+
+      @include vp-767 {
+        color: $color-nero;
+      }
+    }
+
+    .user-card__position {
+      color: $color-default-white-50;
+
+      @include vp-767 {
+        color: $color-nero-50;
+      }
+    }
+  }
+}

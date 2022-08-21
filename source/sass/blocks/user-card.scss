@@ -1,0 +1,74 @@
+.user-card {
+  display: inline-flex;
+
+  &[href] {
+    &:hover,
+    &:focus {
+      .user-card__name {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  &__avatar {
+    flex-shrink: 0;
+    margin-right: size(16px);
+    width: size(72px);
+    height: size(72px);
+    border-radius: 50%;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+
+    @include vp-1439 {
+      margin-right: 16px;
+      width: 72px;
+      height: 72px;
+    }
+
+    @include vp-767 {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  &__name {
+    margin-top: 0;
+    margin-bottom: 0;
+
+    font-size: size(18px);
+    line-height: size(24px);
+
+    transition: opacity $trans-default;
+
+    @include vp-1439 {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+
+  &__position {
+    margin-top: size(8px);
+    margin-bottom: 0;
+    color: $color-nero-50;
+
+    @include vp-1439 {
+      margin-top: 8px;
+    }
+
+    @include vp-767 {
+      margin-top: 6px;
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}

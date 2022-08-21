@@ -1,0 +1,87 @@
+mixin resources(data)
+  ul.resources.resources__places
+    - for (let i = 0; i < data.length; i++)
+      li.resources__item(data-toggle-item)
+        .resources__place(data-toggle)
+          h3.heading-4.resources__title!=data[i].place
+          button(type="button").resources__toggle
+            +icon("icon-plus", 20, 20).resources__open
+            +icon("icon-minus", 20, 20).resources__close
+        table.table
+          tr.tr-flex
+            th.heading-5.col-1 №
+            th.heading-5.col-2 Марка бетона
+            th.heading-5.col-3 Цена с НДС ₽/м³
+          if data[i].resources.s1
+            tr.tr-flex
+              td.text-14.col-1.category 1
+              td.text-14.col-2
+                span.text-14.hidden Марка бетона
+                span!=data[i].resources.s1.amount
+              td.text-14.col-3
+                span.text-14.hidden Цена с НДС ₽/м³
+                span!=data[i].resources.s1.price
+          if data[i].resources.s2
+            tr.tr-flex
+              td.text-14.col-1.category 2
+              td.text-14.col-2
+                span.text-14.hidden Марка бетона
+                span!=data[i].resources.s2.amount
+              td.text-14.col-3
+                span.text-14.hidden Цена с НДС ₽/м³
+                span!=data[i].resources.s2.price
+          if data[i].resources.s3
+            tr.tr-flex
+              td.text-14.col-1.category 3
+              td.text-14.col-2
+                span.text-14.hidden Марка бетона
+                span!=data[i].resources.s3.amount
+              td.text-14.col-3
+                span.text-14.hidden Цена с НДС ₽/м³
+                span!=data[i].resources.s3.price
+          if data[i].resources.s4
+            tr.tr-flex
+              td.text-14.col-1.category 4
+              td.text-14.col-2
+                span.text-14.hidden Марка бетона
+                span!=data[i].resources.s4.amount
+              td.text-14.col-3
+                span.text-14.hidden Цена с НДС ₽/м³
+                span!=data[i].resources.s4.price
+          if data[i].resources.s5
+            tr.tr-flex
+              td.text-14.col-1.category 5
+              td.text-14.col-2
+                span.text-14.hidden Марка бетона
+                span!=data[i].resources.s5.amount
+              td.text-14.col-3
+                span.text-14.hidden Цена с НДС ₽/м³
+                span!=data[i].resources.s5.price
+          if data[i].resources.s6
+            tr.tr-flex
+              td.text-14.col-1.category 6
+              td.text-14.col-2
+                span.text-14.hidden Марка бетона
+                span!=data[i].resources.s6.amount
+              td.text-14.col-3
+                span.text-14.hidden Цена с НДС ₽/м³
+                span!=data[i].resources.s6.price
+          if data[i].resources.s7
+            tr.tr-flex
+              td.text-14.col-1.category 7
+              td.text-14.col-2
+                span.text-14.hidden Марка бетона
+                span!=data[i].resources.s7.amount
+              td.text-14.col-3
+                span.text-14.hidden Цена с НДС ₽/м³
+                span!=data[i].resources.s7.price
+          if data[i].resources.s8
+            tr.tr-flex
+              td.text-14.col-1.category 8
+              td.text-14.col-2
+                span.text-14.hidden Марка бетона
+                span!=data[i].resources.s8.amount
+              td.text-14.col-3
+                span.text-14.hidden Цена с НДС ₽/м³
+                span!=data[i].resources.s8.price
+

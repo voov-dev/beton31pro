@@ -1,0 +1,70 @@
+.scroll-btn {
+  $root: &;
+
+  padding: 0;
+  margin: 0;
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  background: none;
+  color: $color-default-white;
+  display: flex;
+  align-items: center;
+
+  @include vp-767 {
+    flex-direction: row-reverse;
+  }
+
+  @include has-hover {
+    #{$root}__icon {
+      background: $color-default-white;
+      color: $color-nero;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: size(72px);
+    height: size(72px);
+    border-radius: 50%;
+    border: size(1px) solid $color-default-white-15;
+    color: $color-default-white;
+    margin-left: size(24px);
+    transition: $trans-default;
+    transition-property: color, background-color;
+
+    @include vp-1439 {
+      width: 72px;
+      height: 72px;
+      border: 1px solid $color-default-white-15;
+      margin-left: 24px;
+    }
+
+    @include vp-767 {
+      width: 48px;
+      height: 48px;
+      margin: 0 12px 0 0;
+      color: $color-nero;
+      border: none;
+      background-color: $color-default-white;
+    }
+
+    svg {
+      display: block;
+      width: size(24px);
+      height: size(24px);
+
+      @include vp-1439 {
+        width: 24px;
+        height: 24px;
+      }
+
+      @include vp-767 {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}

@@ -1,0 +1,161 @@
+.section-header {
+  $root: &;
+
+  padding: size(94px) 0 size(64px);
+  background-color: $color-bridal-heath;
+
+  @include vp-1439 {
+    padding: 94px 0 64px;
+  }
+
+  @include vp-767 {
+    padding: 48px 0;
+  }
+
+  .container {
+    display: flex;
+
+    @include vp-767 {
+      flex-direction: column;
+    }
+  }
+
+  &__header-wrp {
+    flex-shrink: 0;
+    width: 25%;
+    padding: size(6px) size(48px) 0 0;
+
+    @include vp-1439 {
+      padding: 6px 48px 0 0;
+    }
+
+    @include vp-1023 {
+      padding: 6px 24px 0 0;
+    }
+
+    @include vp-767 {
+      width: 100%;
+      margin: 0 0 24px;
+      padding: 0;
+    }
+  }
+
+  &__header {
+    margin: 0;
+
+    &--desc {
+      @include vp-767 {
+        display: none;
+      }
+    }
+
+    &--mob {
+      display: none;
+
+      @include vp-767 {
+        display: block;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0 0 size(26px);
+
+    @include vp-1439 {
+      margin: 0 0 26px;
+    }
+
+    @include vp-767 {
+      margin: 0 0 16px;
+    }
+
+    &--desc {
+      @include vp-767 {
+        display: none;
+      }
+    }
+
+    &--mob {
+      display: none;
+
+      @include vp-767 {
+        display: block;
+      }
+    }
+
+    span[data-city-time-full] {
+      margin-left: size(15px);
+      color: $color-nero-50;
+
+      @include vp-1439 {
+        margin-right: 15px;
+      }
+    }
+  }
+
+  &__title-btn {
+    font-weight: inherit;
+    font-size: inherit;
+    text-transform: uppercase;
+    color: $color-nero;
+
+    padding: 0;
+    border: none;
+    background-color: $color-transparent;
+
+    cursor: pointer;
+
+    transition: color $trans-default;
+
+    @media (hover: hover), screen and (min-width: 0\0) {
+      &:hover:not(.focus-visible),
+      &.focus-visible:focus {
+        color: $color-nero-50;
+      }
+    }
+  }
+
+  &__text {
+    max-width: size(600px);
+    margin: 0;
+    color: $color-nero-50;
+
+    @include vp-1439 {
+      max-width: 600px;
+    }
+
+    &--desc {
+      @include vp-767 {
+        display: none;
+      }
+    }
+
+    &--mob {
+      display: none;
+
+      @include vp-767 {
+        display: block;
+      }
+    }
+  }
+
+  &--blue {
+    background-color: $color-midnight-express;
+
+    #{$root}__header {
+      color: $color-default-white;
+    }
+
+    #{$root}__title {
+      color: $color-default-white;
+    }
+
+    #{$root}__text {
+      color: $color-default-white-50;
+    }
+  }
+
+  &__blue-word {
+    color: $color-mariner;
+  }
+}

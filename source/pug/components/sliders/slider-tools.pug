@@ -1,0 +1,9 @@
+mixin slider-tools(options = {})
+  - const paginationMod = options.paginationMod ? options.paginationMod : false
+  - const controlsMod = options.controlsMod ? options.controlsMod : false
+
+
+  .slider-tools&attributes(attributes)
+    .caps-12.slider-tools__pagination.nav-count(class=paginationMod, data-pagination)
+
+    +slider-controls()(class=controlsMod)

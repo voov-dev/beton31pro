@@ -1,3 +1,66 @@
-mixin footer(footerMods)
-  footer.footer(class=footerMods)
-    .container
+mixin footer(footerMods, currentUrl)
+
+  -
+    const footerNav = [
+      {
+        title: 'Главная',
+        href: 'index.html',
+      },
+      {
+        title: 'Бетон',
+        href: 'article.html',
+      },
+      {
+        title: 'Цементный раствор',
+        href: '#',
+      },
+      {
+        title: 'Керамзитобетон',
+        href: '#',
+      },
+      {
+        title: 'Прайс-лист',
+        href: '#',
+      },
+      {
+        title: 'Контакты',
+        href: 'contacts.html',
+      },
+    ]
+
+  +running-line()
+  footer.footer(class=footerMods)&attributes(attributes)
+    .footer__inner
+      .footer__img-wrp
+        +picture("content", "footer", "jpg", 361, 295, "Процесс отливки золота")
+        +icon("footer-icon", 84, 118).footer__img-icon
+      .footer__info
+        .footer__nav
+          .container
+            ul.footer__list
+              each item in footerNav
+                li.footer__item
+                  if (item.href === currentUrl)
+                    a.caps-12.link.link--disabled.footer__nav-link(href=item.href)!=item.title
+                  else
+                    a.caps-12.link.footer__nav-link(href=item.href)!=item.title
+
+        .footer__contacts
+          .container
+            .footer__contact
+              a.link.footer__contact-link(href='tel:+79103619000', aria-label='Позвонить в ООО «Монолит»') +7 910 361 90 00
+              a.link.footer__contact-link(href='tel:+79803791000', aria-label='Позвонить в ООО «Монолит»') +7 980 379 10 00
+
+            .footer__contact
+              a.link.footer__contact-link(href='tel:+79805206000', aria-label='Позвонить в ООО «Монолит»') +7 980 520 60 00
+              a.link.footer__contact-link(href='tel:+84724875371', aria-label='Позвонить в ООО «Монолит»') &nbsp;&nbsp;8&nbsp;47248&nbsp; 7 53 71
+
+            .footer__contact
+              span.text-14.footer__contact-title Email
+              a.link.footer__contact-link(href='mailto:anma.80@mail.ru', aria-label='Отправить письмо по электронной почте') anma.80@mail.ru
+
+            +link-download({name: "Скачать прайс-лист", href: "./lsx/monolitPrice.lsx", ext: "lsx", size: "340 kb"})
+
+    .footer__bottom
+      .container
+        p.text-14.footer__copyright ©2022 ООО «Монолит»

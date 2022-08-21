@@ -3,33 +3,144 @@
   position: relative;
 
   display: flex;
-  width: 500px;
-  padding: 20px 0;
+  width: size(500px);
+  padding: size(20px) 0;
+
+  @include vp-1439 {
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  .custom-textarea__label {
+    &.is-active {
+      color: $color-nero-50;
+    }
+  }
 
   label {
+    position: relative;
     display: flex;
     align-items: center;
     width: 100%;
 
+    &::after {
+      position: absolute;
+      content: "";
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: size(1px);
+      background-color: $color-default-white-15;
+      transition: all $trans-default;
+
+      @include vp-1439 {
+        height: 1px;
+      }
+
+      @include vp-767 {
+        bottom: -2px;
+      }
+    }
+
     input,
     textarea {
       flex-grow: 1;
-      min-height: 40px;
-      margin-left: 30px;
-      padding: 10px;
-
-      border: 2px solid rgba($color-default-black, 0.2);
-      border-radius: 5px;
+      min-height: size(40px);
+      // margin-left: 30px;
+      padding: size(25px) size(10px) size(25px) 0;
+      // border: 2px solid rgba($color-default-black, 0.2);
+      // border-radius: 5px;
+      font-size: size(14px);
+      line-height: size(22px);
+      background-color: $color-transparent;
+      border: none;
+      // border-bottom: 1px solid $color-default-white-15;
+      color: $color-nero;
       outline: none;
+      transition: color $trans-default, border-bottom-color $trans-default;
 
-      transition: border $trans-default;
-
-      &:hover {
-        border: 2px solid rgba($color-default-black, 0.5);
+      .custom-input__icon {
+        display: none;
       }
 
-      &:focus {
-        border: 2px solid rgba($color-default-black, 0.8);
+      &[aria-required="true"] {
+        .custom-input__icon {
+          display: block;
+        }
+      }
+
+      @include vp-1439 {
+        min-height: 40px;
+        padding: 25px 10px 25px 0;
+        font-size: 14px;
+        line-height: 22px;
+      }
+
+      @include vp-767 {
+        padding: 16px 10px 16px 0;
+      }
+
+      &:hover {
+        &::placeholder {
+          color: $color-nero-70;
+        }
+      }
+
+      // &:focus {
+      // border: 2px solid rgba($color-default-black, 0.8);
+
+      // & ~ .custom-input__icon {
+      //   background-color: $color-mariner;
+      // }
+      // }
+
+      &::placeholder {
+        color: $color-default-white-50;
+        transition: color $trans-default;
+      }
+    }
+  }
+
+  &--dark {
+    &.is-valid {
+      label {
+        .custom-input__icon {
+          background-color: $color-apple;
+        }
+      }
+    }
+
+    .custom-input__label {
+      color: $color-nero-50;
+
+      // &.is-active {
+      //   opacity: 0;
+      //   visibility: hidden;
+      // }
+    }
+
+    .custom-input__icon {
+      background-color: $color-midnight-express;
+    }
+
+    label {
+      &::after {
+        background-color: $color-nero-20;
+      }
+
+      input,
+      textarea {
+        color: $color-nero;
+
+        &::placeholder {
+          color: $color-nero-50;
+        }
+
+        &:hover {
+          &::placeholder {
+            color: $color-nero-70;
+          }
+        }
       }
     }
   }
@@ -37,23 +148,69 @@
   &__error {
     position: absolute;
     right: 0;
-    bottom: -5px;
+    bottom: size(-20px);
 
-    color: $color-torch-red;
+    // color: $color-torch-red;
 
     opacity: 0;
 
     transition: opacity $trans-default;
+
+    @include vp-1439 {
+      bottom: -20px;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    right: size(2px);
+    transform: translateY(-50%);
+    display: none;
+    flex-shrink: 0;
+    width: size(6px);
+    height: size(6px);
+    background-color: $color-default-white;
+    border-radius: 50%;
+    transition: all $trans-default;
+
+    @include vp-1439 {
+      right: 2px;
+
+      width: 6px;
+      height: 6px;
+    }
   }
 
   &.is-invalid {
-    input {
-      border: 2px solid $color-torch-red;
+    .custom-input__icon,
+    .custom-textarea__icon {
+      background-color: $color-persian-red;
+    }
 
-      &:focus,
-      &:hover {
-        border: 2px solid rgba($color-torch-red, 0.5);
+    input {
+      // border: 2px solid $color-torch-red;
+      color: $color-persian-red;
+      // border-bottom-color: $color-persian-red;
+
+      // &:focus,
+      // &:hover {
+      //   border: 2px solid rgba($color-torch-red, 0.5);
+      // }
+
+      &::placeholder {
+        color: $color-persian-red;
       }
+    }
+
+    label {
+      &::after {
+        background-color: $color-persian-red;
+      }
+    }
+
+    .custom-input__label {
+      color: $color-persian-red;
     }
 
     .custom-input__error {
@@ -61,14 +218,133 @@
     }
   }
 
-  /*&.is-valid {
-    input {
-      border: 2px solid $color-malachite;
+  &.is-valid {
+    .custom-input__icon {
+      background-color: $color-mariner;
+    }
+    // input {
+    //   border: 2px solid $color-malachite;
 
-      &:focus,
+    //   &:focus,
+    //   &:hover {
+    //     border: 2px solid rgba($color-malachite, 0.5);
+    //   }
+    // }
+  }
+}
+
+.custom-input {
+  &--file {
+    label {
+      min-height: size(72px);
+      padding: 0 size(36px) 0 0;
+      cursor: pointer;
+
+      @include vp-1439 {
+        min-height: 72px;
+        padding: 0 36px 0 0;
+      }
+
+      @include vp-767 {
+        min-height: 54px;
+      }
+
+      &.is-active {
+        & ~ .custom-input__delete-btn {
+          opacity: 1;
+          pointer-events: auto;
+        }
+
+        & .custom-input__label {
+          position: absolute;
+          top: 0;
+          font-size: size(12px);
+
+          @include vp-1439 {
+            font-size: 12px;
+          }
+
+          @include vp-767 {
+            top: -12px;
+          }
+        }
+      }
+
       &:hover {
-        border: 2px solid rgba($color-malachite, 0.5);
+        .custom-input__label {
+          color: rgba($color-default-white, 0.7);
+        }
+      }
+
+      input {
+        padding: 0;
+
+        @include vp-1439 {
+          padding: 0;
+        }
+      }
+
+      .custom-input__label {
+        position: relative;
+        top: auto;
+        width: 100%;
+        font-size: size(14px);
+        line-height: 157%;
+        opacity: 1;
+        visibility: visible;
+
+        @include vp-1439 {
+          font-size: 14px;
+        }
       }
     }
-  }*/
+
+    .custom-input {
+      &__icon {
+        display: block;
+        width: size(24px);
+        height: size(24px);
+        background-color: $color-transparent;
+        border-radius: 0;
+
+        @include vp-1439 {
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      &__title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      &__delete-btn {
+        position: absolute;
+        top: 50%;
+        right: size(63px);
+        transform: translateY(-50%);
+        z-index: 1;
+        margin: 0;
+        padding: size(6px);
+        opacity: 0;
+        pointer-events: none;
+        transition: all $trans-default;
+        cursor: pointer;
+
+        @include vp-1439 {
+          right: 63px;
+          padding: 6px;
+        }
+
+        @include vp-767 {
+          right: 0;
+        }
+
+        @include has-hover {
+          color: rgba($color-default-white, 0.5);
+        }
+      }
+    }
+  }
 }

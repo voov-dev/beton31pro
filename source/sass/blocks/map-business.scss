@@ -1,0 +1,378 @@
+.map-business {
+  position: relative;
+  height: size(633px);
+  margin: 0 auto;
+  color: $color-default-white;
+  background: $color-lucky-point;
+  overflow: hidden;
+
+  @include vp-1023 {
+    flex-direction: column;
+    height: 600px;
+  }
+
+  &__slider {
+    width: 50%;
+  }
+
+  &__slider {
+    .swiper-slide {
+      transition-delay: 0.5s;
+    }
+
+    .swiper-fade .swiper-slide-active,
+    .swiper-fade .swiper-slide-active .swiper-slide-active {
+      pointer-events: none;
+    }
+
+    .is-active & {
+      .swiper-fade .swiper-slide-active,
+      .swiper-fade .swiper-slide-active .swiper-slide-active {
+        pointer-events: auto;
+      }
+    }
+
+    @include vp-1023 {
+      background: $color-lucky-point;
+      width: 100%;
+      height: 100%;
+      // margin-bottom: 24px;
+    }
+  }
+
+  &__inner {
+    width: 50%;
+
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    right: 0;
+
+    @include vp-1023 {
+      width: 100%;
+
+      position: relative;
+      top: auto;
+      bottom: auto;
+      left: auto;
+      right: auto;
+
+      height: 605px;
+    }
+  }
+
+  &__popup-wrp {
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+
+    @include vp-1023 {
+      position: absolute;
+      z-index: 101;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      overflow: auto;
+      background: $color-lucky-point;
+      flex-direction: column;
+
+      @include maskToLeft;
+      // padding-bottom: 24px;
+      padding-top: 6px;
+      pointer-events: none;
+
+      .is-active & {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        pointer-events: auto;
+      }
+    }
+
+    .swiper-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .swiper-wrapper {
+      flex-grow: 2;
+      height: auto;
+
+      @include vp-1023 {
+        opacity: 0;
+        transition: opacity $trans-1000 1s;
+
+        .is-active & {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__popup {
+    @include maskToLeft;
+    position: relative;
+    z-index: 2;
+    flex-grow: 1;
+
+    width: 50%;
+    order: 2;
+    margin-bottom: -2px;
+
+    &.is-active {
+      clip-path: polygon(0 0,100% 0,100% 105%,0 105%);
+    }
+
+    .swiper-container {
+      width: 100%;
+      background: $color-mariner;
+    }
+
+    .swiper-slide {
+      // z-index: 3;
+      // clip-path: polygon(0 0,0 0,0 100%,0 100%);
+      transition: clip-path 1s;
+      opacity: 1!important;
+    }
+
+    .swiper-slide-prev {
+      z-index: 3;
+      clip-path: polygon(0 0,0 0,0 100%,0 100%);
+    }
+
+    .swiper-slide-active {
+      z-index: 2;
+      clip-path: polygon(0 0,100% 0,100% 100%,0 100%);
+    }
+
+    .swiper-slide-next {
+      z-index: 1;
+      clip-path: polygon(0 0,100% 0,100% 100%,0 100%);
+    }
+
+
+    @include vp-1023 {
+      width: 100%;
+      order: 0;
+      margin-bottom: 0;
+
+      padding-bottom: 0;
+    }
+  }
+
+  &__open-btn,
+  &__close-btn {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    top: 0;
+
+    width: size(64px);
+    height: size(64px);
+    border-radius: 0;
+
+    @include vp-1439 {
+      width: 64px;
+      height: 64px;
+    }
+
+    svg {
+      width: size(24px);
+      height: size(24px);
+
+      @include vp-1439 {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    @include vp-1023 {
+      left: auto;
+      right: 0;
+    }
+  }
+
+  &__open-btn {
+    display: none;
+
+    @include vp-1023 {
+      display: flex;
+    }
+  }
+
+
+  &__close-btn {
+    .map-business__close-btn-open-icon {
+      opacity: 0;
+      transition: all $trans-default;
+
+      .is-active & {
+        opacity: 1;
+      }
+
+      @include vp-1023 {
+        opacity: 1;
+      }
+    }
+
+    .map-business__close-btn-close-icon {
+      position: absolute;
+      opacity: 1;
+      transition: all $trans-default;
+
+      .is-active & {
+        opacity: 0;
+      }
+
+      @include vp-1023 {
+        opacity: 0;
+      }
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+    z-index: 1;
+
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: $color-lucky-point;
+      background-blend-mode: color;
+      opacity: 0.3;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__slider-controls {
+    // margin: auto 0 0;
+
+    .slider-controls {
+      flex-direction: row;
+    }
+
+    .slider-tools__pagination,
+    .slider-controls__btn {
+      padding: size(36px) size(46px);
+      color: $color-default-white;
+      background: $color-transparent;
+      border-left: size(1px) solid $color-default-white-15;
+
+      @include vp-1439 {
+        padding: 36px 46px;
+      }
+
+      @include vp-1023 {
+        padding: 20px;
+      }
+    }
+
+    .slider-tools__pagination {
+      color: $color-mariner;
+
+      @include vp-1023 {
+        padding: 20px 24px;
+        color: $color-default-white-50;
+      }
+
+      @include vp-767 {
+        padding: 20px 16px;
+      }
+    }
+
+    .slider-controls__btn {
+      transition: background-color $trans-default;
+
+      @include has-hover {
+        background-color: $color-mariner;
+
+        & svg {
+          transform: none;
+        }
+      }
+    }
+
+    @include vp-1023 {
+      // position: absolute;
+      // z-index: 2;
+      // top: 0;
+      // left: 0;
+      // right: 0;
+      // padding-right: 64px;
+      // background: $color-lucky-point;
+      // border-top: none
+    }
+
+    .nav-count {
+      &__current {
+        color: $color-default-white;
+      }
+    }
+  }
+
+  &__close {
+    display: none;
+
+    @include vp-1023 {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      right: 0;
+      display: flex;
+      padding: 25px;
+      width: auto;
+      margin: 0;
+      justify-content: center;
+      color: $color-nero;
+    }
+
+    svg {
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+  &__zoom-message {
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    bottom: 0;
+    // left: 0;
+    right: 0;
+    width: 50%;
+    padding: size(20px);
+    color: $color-default-white;
+    background-color: rgba($color-midnight-express, 0.5);
+    z-index: 1;
+
+    &.active {
+      display: flex;
+    }
+
+    @include vp-1439 {
+      font-size: 18px;
+      line-height: 24px;
+    }
+
+    span {
+      text-align: center;
+    }
+  }
+}

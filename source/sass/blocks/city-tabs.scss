@@ -1,0 +1,431 @@
+.city-tabs {
+  &__controls {
+    display: none;
+
+    @include vp-767 {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      width: 100%;
+
+      overflow-x: auto;
+
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      opacity: 1;
+      visibility: visible;
+
+      transition: opacity $trans-default, visibility $trans-default;
+
+      &.is-hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+  }
+
+  &__nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-top: 21px;
+    padding-bottom: 19px;
+
+    max-width: 55%;
+    min-width: 100px;
+    width: 100%;
+    color: $color-default-white;
+
+    background-color: $color-transparent;
+    border: 1px solid $color-default-white-15;
+    border-left: none;
+
+    transition: color $trans-default;
+
+    cursor: pointer;
+
+    &.is-active {
+      color: $color-default-white-50;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+
+    background-color: $color-bridal-heath;
+
+    @include vp-767 {
+      background-color: $color-lucky-point;
+    }
+  }
+
+  &--contacts {
+    position: relative;
+    margin-top: size(2px);
+
+    border-top: size(1px) solid $color-nero-10;
+    border-bottom: size(1px) solid $color-nero-10;
+
+    @include vp-1439 {
+      margin-top: 2px;
+
+      border-top: 1px solid $color-nero-10;
+      border-bottom: 1px solid $color-nero-10;
+    }
+
+    @include vp-767 {
+      border-bottom: none;
+    }
+
+    .city-tabs__content {
+      position: relative;
+      background-color: $color-bridal-heath;
+    }
+
+    .city-tabs__controls {
+      position: absolute;
+      z-index: 4;
+      top: size(26px);
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: size(48px);
+      max-width: 45%;
+
+      @include vp-1439 {
+        top: 26px;
+        margin-left: 48px;
+      }
+
+      @include vp-1023 {
+        margin-left: 24px;
+      }
+
+      @include vp-767 {
+        position: relative;
+        top: auto;
+        margin-left: 0;
+        width: 100%;
+        max-width: 100%;
+
+        &.is-hidden {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+
+    .city-tabs__nav-button {
+      position: relative;
+
+      padding: size(15px) size(20.5px);
+      color: $color-nero;
+      border: none;
+      min-width: auto;
+      width: auto;
+
+      transition: opacity $trans-default;
+
+      &:first-of-type {
+        padding-left: size(4px);
+      }
+
+      @include has-hover {
+        opacity: 0.5;
+      }
+
+      &:not(:first-of-type)::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: size(-2px);
+
+        width: size(6px);
+        height: size(6px);
+
+        border-radius: 50%;
+
+        background-color: $color-nero-50;
+
+        transform: translateY(-50%);
+
+        @include vp-1439 {
+          width: 6px;
+          height: 6px;
+        }
+      }
+
+      @include vp-1439 {
+        padding: 16px;
+      }
+
+      @include vp-767 {
+        padding: 16px 15px 17px 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        width: 100%;
+
+        font-size: 20px;
+        line-height: 28px;
+        border-right: 1px solid $color-nero-10;
+
+        &:first-of-type {
+          padding-left: 16px;
+        }
+
+        &:last-of-type {
+          border-right: 0;
+        }
+
+        &::after {
+          display: none;
+        }
+      }
+
+      &.is-active {
+        color: $color-nero-50;
+        pointer-events: none;
+      }
+    }
+
+    .city-tabs__detailed-time {
+      display: none;
+
+      @include vp-767 {
+        display: flex;
+        margin-top: 4px;
+        font-size: 12px;
+        line-height: 18px;
+        color: $color-nero-50;
+      }
+    }
+
+    .city-item {
+      opacity: 0;
+      width: 100%;
+      min-height: size(460px);
+
+      &.is-active {
+        .city-item__content {
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+      }
+
+      &.is-hidden {
+        .city-item__button-location {
+          color: $color-midnight-express;
+          background-color: $color-default-white;
+        }
+      }
+
+      @include vp-1439 {
+        min-height: 460px;
+      }
+
+      @include vp-767 {
+        position: absolute;
+        min-height: 458px;
+
+        &.is-hidden {
+          .city-item__content {
+            clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+          }
+        }
+      }
+    }
+
+    .city-item__contact-item {
+      display: none;
+
+      @include vp-767 {
+        display: flex;
+        margin-bottom: 6px;
+
+        font-size: 14px;
+        line-height: 22px;
+        color: $color-default-white-50;
+      }
+    }
+
+    .city-item__button-location {
+      top: 0;
+      bottom: auto;
+      right: calc(50% - #{size(64px)});
+
+      width: size(64px);
+      height: size(64px);
+
+      border-radius: 0;
+
+      background-color: $color-midnight-express;
+      color: $color-default-white;
+
+      @include vp-1439 {
+        right: calc(50% - 64px);
+
+        width: 64px;
+        height: 64px;
+      }
+
+      @include vp-767 {
+        top: auto;
+        bottom: 16px;
+        left: 16px;
+        right: auto;
+        width: 48px;
+        height: 48px;
+
+        color: $color-midnight-express;
+
+        background-color: $color-default-white;
+        border-radius: 50%;
+      }
+    }
+
+    .city-item__content {
+      justify-content: flex-end;
+      padding: size(48px) size(42px);
+
+      min-height: size(460px);
+      width: 50%;
+
+      transition: opacity $trans-default, visibility $trans-default;
+
+      @include vp-1439 {
+        padding: 48px 42px;
+        min-height: 460px;
+      }
+
+      @include vp-1023 {
+        padding: 24px 20px;
+      }
+
+      @include vp-767 {
+        justify-content: flex-start;
+        padding: 40px 16px;
+        width: 100%;
+
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        transition: clip-path 0.5s ease 0.2s, opacity 0.8s ease;
+      }
+    }
+
+    .city-item__phone {
+      margin-bottom: size(12px);
+      color: $color-nero;
+
+      transition: opacity $trans-default;
+
+      @include vp-1439 {
+        margin-bottom: 12px;
+      }
+
+      @include vp-767 {
+        margin-bottom: 9px;
+        font-size: 20px;
+        line-height: 28px;
+        color: $color-default-white;
+      }
+
+      @media (hover: hover), screen and (min-width: 0\0) {
+        &:hover,
+        &:focus {
+          opacity: 0.5;
+        }
+      }
+    }
+
+    .city-item__email {
+      margin-bottom: size(4px);
+      transition: opacity $trans-default;
+
+      @include vp-1439 {
+        margin-bottom: 4px;
+      }
+
+      @include vp-767 {
+        margin-bottom: 25px;
+        color: $color-default-white;
+      }
+
+      @media (hover: hover), screen and (min-width: 0\0) {
+        &:hover,
+        &:focus {
+          opacity: 0.5;
+        }
+      }
+    }
+
+    .city-item__working-hours {
+      margin-top: 0;
+      margin-bottom: size(24px);
+      color: $color-nero-50;
+
+      @include vp-1439 {
+        margin-bottom: 24px;
+      }
+
+      @include vp-767 {
+        color: $color-default-white-50;
+      }
+    }
+
+    .city-item__contacts {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .city-item__title {
+      display: none;
+    }
+
+    .city-item__footer {
+      display: none;
+    }
+
+    .city-item__address {
+      color: $color-nero;
+
+      @include vp-767 {
+        margin-top: 3px;
+        color: $color-default-white;
+      }
+    }
+
+    .city-item__video-wrapper {
+      left: auto;
+      right: 0;
+      width: 50%;
+
+      &::before {
+        display: none;
+      }
+
+      @include vp-767 {
+        width: 100%;
+
+        &::before {
+          display: flex;
+        }
+      }
+    }
+
+    .city-item__map {
+      left: auto;
+      right: 0;
+
+      width: 50%;
+
+      @include vp-767 {
+        width: 100%;
+      }
+    }
+  }
+}

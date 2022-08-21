@@ -1,0 +1,65 @@
+mixin new-content (data)
+  - const {intro, slider, video, textsTop, textsBottom} = data
+  -
+    const tableData = [
+      {
+        place: "ГОСТ 7473-2010, щебень гранитный фракция 5-20",
+        resources: {
+          s1: {
+            amount: "М100 (В 7,5)",
+            price: "—",
+          },
+          s2: {
+            amount: "М150 (В 12,5)",
+            price: "—",
+          },
+          s3: {
+            amount: "М200 (В 15)",
+            price: "6 050",
+          },
+          s4: {
+            amount: "М250 (В 20)",
+            price: "6 400",
+          },
+          s5: {
+            amount: "М300 (В 22,5)",
+            price: "6 700",
+          },
+          s6: {
+            amount: "М350 (В25)",
+            price: "6 900",
+          },
+          s7: {
+            amount: "М400 (В 30)",
+            price: "7 300",
+          },
+          s8: {
+            amount: "М500 (В 40)",
+            price: "7 700",
+          },
+        },
+      },
+    ]
+
+  section.new-content
+    .container
+      .new-content__top
+        .new-content__date
+          span.new-content__date-number!=intro.dateNumber
+          .new-content__date-text
+            span!=intro.dateMonth
+            span!=intro.dateYear
+        .new-content__text-container
+          h1.new-content__title!=intro.title
+          p.new-content__intro-text!=intro.text
+      .new-content__main
+        //- .new-content__block(class=`new-content__block--slider`)
+        //-   +gallery-slider(slider.slides, "new")
+        .new-content__main-wrp
+          .text-content
+            each item in textsTop
+              +text-block(item)
+          +resources(tableData)
+          .text-content
+            each item in textsBottom
+              +text-block(item)

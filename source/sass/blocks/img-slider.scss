@@ -1,0 +1,100 @@
+.img-slider {
+  position: relative;
+  background-color: $color-bridal-heath;
+
+  .overlay-animate {
+    position: absolute;
+    z-index: 10;
+    right: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+    background-color: $color-bridal-heath;
+  }
+
+  @include vp-767 {
+    border-bottom: 2px solid $color-nero-15;
+  }
+
+  &__slide {
+    height: auto;
+    min-height: size(380px);
+    overflow: hidden;
+
+    @include vp-1439 {
+      min-height: 764px;
+    }
+
+    @include vp-1023 {
+      min-height: 640px;
+    }
+
+    @include vp-767 {
+      min-height: auto;
+    }
+  }
+
+  &__title {
+    position: absolute;
+    z-index: 2;
+    margin: 0;
+
+    top: size(48px);
+    left: size(48px);
+
+    color: $color-default-white;
+
+    @include vp-1439 {
+      top: 48px;
+      left: 48px;
+    }
+
+    @include vp-1023 {
+      top: 40px;
+      left: 24px;
+    }
+
+    @include vp-767 {
+      top: 38px;
+      left: 16px;
+    }
+  }
+
+  .img-pagination {
+    position: absolute;
+    z-index: 2;
+    left: auto;
+    right: size(42px);
+    bottom: size(44px);
+
+    // justify-content: flex-end;
+
+    width: auto;
+    max-width: 40%;
+    overflow-x: auto;
+
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @include vp-1439 {
+      right: 42px;
+      bottom: 44px;
+    }
+
+    @include vp-1023 {
+      right: 24px;
+    }
+
+    @include vp-767 {
+      right: 10px;
+      top: 305px;
+      bottom: auto;
+
+      max-width: 80%;
+    }
+  }
+}

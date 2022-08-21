@@ -1,0 +1,13 @@
+mixin user-card(props)
+  if props.href
+    a.user-card(href=props.href, rel="nofollow noopener noreferrer")&attributes(attributes)
+      .user-card__avatar
+        +picture(...props.img)
+      .user-card__text
+        p.heading-5.user-card__name !{props.name}
+        p.text-14.user-card__position !{props.position}
+  else
+    .user-card&attributes(attributes)
+      if props.img
+        .user-card__avatar
+          +picture(...props.img)

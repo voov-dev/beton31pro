@@ -1,0 +1,54 @@
+.rotate {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  color: $color-default-white;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  background-color: $color-midnight-express;
+  display: none;
+
+  @media only screen and (max-width : 1023px) and (orientation : landscape) {
+    display: flex;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: size(98px) 1fr;
+    column-gap: size(40px);
+    width: 76%;
+
+    @include vp-1439 {
+      grid-template-columns: 98px 1fr;
+      column-gap: 40px;
+    }
+  }
+
+  &__title {
+    margin-top: 0;
+    margin-bottom: size(8px);
+    font-weight: 400;
+    font-size: size(18px);
+    line-height: size(24px);
+
+    @include vp-1439 {
+      margin-bottom: 8px;
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+
+  &__text {
+    margin: 0;
+    font-size: size(14px);
+    line-height: size(22px);
+
+    @include vp-1439 {
+      font-size: 14px;
+      line-height: 22px;
+    }
+  }
+}

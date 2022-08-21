@@ -1,0 +1,80 @@
+.running-line {
+  position: relative;
+  z-index: 10;
+  padding-top: size(49px);
+  padding-bottom: size(59px);
+  margin-top: -1px;
+
+  background-color: $color-midnight-express;
+
+  overflow: hidden;
+
+  @include vp-1439 {
+    padding-top: 49px;
+    padding-bottom: 59px;
+  }
+
+  @include vp-767 {
+    padding-top: 34px;
+    padding-bottom: 42px;
+  }
+
+  &__content {
+    display: flex;
+    align-items: baseline;
+
+    transition-timing-function : linear;
+
+    svg {
+      flex-shrink: 0;
+      color: $color-mariner;
+
+      @include vp-767 {
+        height: 36px;
+        width: 555px;
+      }
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-shrink: 0;
+
+    margin-right: size(40px);
+    width: auto;
+
+    @include vp-1439 {
+      margin-right: 40px;
+    }
+
+    @include vp-767 {
+      margin-right: 28px;
+    }
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    background: $color-default-black;
+    opacity: 0;
+    transition: opacity $trans-600;
+    pointer-events: none;
+    cursor: pointer;
+
+    @include vp-767 {
+      display: none;
+    }
+  }
+
+  .is-menu-active & {
+    &::before {
+      opacity: 0.5;
+      pointer-events: auto;
+    }
+  }
+}

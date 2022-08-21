@@ -1,0 +1,19 @@
+mixin hot-line(props)
+  section.hot-line&attributes(attributes)
+    .container
+      .hot-line__header
+        if props.title
+          h2.hot-line__title.heading-2-caps !{props.title}
+        if props.titleDes
+          h2.hot-line__title.heading-2-caps
+            span.is-des !{props.titleDes}
+            span.is-mob !{props.titleMob}
+        if props.description
+          p.hot-line__description.text-14 !{props.description}
+        if props.descriptionDes
+          p.hot-line__description.text-14
+            span.is-des !{props.descriptionDes}
+            span.is-mob !{props.descriptionMob}
+      a.hot-line__phone.number-120(href=props.link.href, data-sal="slide-up" data-words-animation) !{props.link.text}
+      .hot-line__footer
+        p.hot-line__notice.heading-4 !{props.notice}

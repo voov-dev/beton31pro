@@ -1,0 +1,118 @@
+/**
+ * Settings
+ */
+
+$sal-animation-duration: 1s !default;
+$sal-animation-delay: 0s !default;
+$sal-slide-offset: 50px !default;
+$sal-zoom-in-scale: 0.5 !default;
+$sal-zoom-out-scale: 1.1 !default;
+$sal-flip-rotate: 91deg !default;
+
+/**
+* Easings
+*/
+
+/**
+* Core
+*/
+
+[data-sal] {
+  transition-duration: $sal-animation-duration;
+  transition-delay: $sal-animation-delay;
+  transition-duration: var(--sal-duration, $sal-animation-duration);
+  transition-delay: var(--sal-delay, $sal-animation-delay);
+  transition-timing-function: ease;
+}
+
+@for $i from 4 through 40 {
+  [data-sal][data-sal-duration="#{$i * 50}"] {
+    transition-duration: #{$i * 0.05}s;
+  }
+}
+
+@for $i from 1 through 20 {
+  [data-sal][data-sal-delay="#{$i * 50}"] {
+    transition-delay: #{$i * 0.05}s;
+  }
+}
+
+/**
+* Animations
+*/
+
+// Fade
+[data-sal|="fade"] {
+  opacity: 0;
+  transition-property: opacity;
+}
+
+[data-sal|="fade"].sal-animate,
+body.sal-disabled [data-sal|="fade"] {
+  opacity: 1;
+}
+
+// Slide
+[data-sal|="slide"] {
+  opacity: 0;
+  transition-property: opacity, transform;
+}
+
+[data-sal="slide-up"] {
+  transform: translateY($sal-slide-offset);
+}
+
+[data-sal="slide-down"] {
+  transform: translateY(-$sal-slide-offset);
+}
+
+[data-sal="slide-left"] {
+  transform: translateX($sal-slide-offset);
+}
+
+[data-sal="slide-right"] {
+  transform: translateX(-$sal-slide-offset);
+}
+
+[data-sal="slide-up-large"] {
+  transform: translateY(1.5rem);
+}
+
+[data-sal|="slide"].sal-animate,
+body.sal-disabled [data-sal|="slide"] {
+  opacity: 1;
+  transform: none;
+}
+
+[data-sal|="scale-right"].sal-animate,
+body.sal-disabled [data-sal|="scale-right"] {
+  // transform: scaleX(100%);
+  max-width: 100%;
+  // transform-origin: left;
+}
+
+[data-sal="scale-right"] {
+  // transform: scaleX(0);
+  max-width: 0;
+  // transform-origin: left;
+}
+
+[data-sal|="scale-right-reverse"].sal-animate,
+body.sal-disabled [data-sal|="scale-right-reverse"] {
+  max-width: 0;
+}
+
+[data-sal="scale-right-reverse"] {
+  max-width: 100%;
+}
+
+[data-sal|="mask-to-right"].sal-animate,
+body.sal-disabled [data-sal|="mask-to-right"] {
+  animation: maskToRight 0.7s ease 0.2s both;
+  opacity: 1;
+}
+
+[data-sal="mask-to-right"] {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}

@@ -1,0 +1,100 @@
+-
+  const indexFactsSection = {
+    headerDesc: "Как мы работаем?",
+    headerMob: "Как мы работаем?",
+    titleDesc: "Изготовим и доставим бетон любой марки до Вашего объекта",
+    titleMob: "Изготовим и доставим бетон любой марки до Вашего объекта",
+    textDesc: "Наши РБУ находятся вблизи транспортных развязок, поэтому мы можем обеспечить срочную доставку за 2 часа. За своевременность поставки несём ответственность по договору.",
+    textMob: "Наши РБУ находятся вблизи транспортных развязок, поэтому мы можем обеспечить срочную доставку за 2 часа. За своевременность поставки несём ответственность по договору.",
+  }
+
+  const stokcsSection = {
+    headerDesc: "Запасы<br> и&nbsp;ресурсы",
+    headerMob: "Запасы и ресурсы",
+    titleDesc: "Текст в разработке.<br>Этот заголовок может быть<br>длиной три строки текста",
+    titleMob: "Текст в разработке.<br>Этот заголовок может быть в три строки",
+  }
+
+  const employerSection = {
+    header: "Ведущий работодатель",
+    title: "Вносим вклад в <br>развитие благополучия <br>жителей региона",
+    text: "Гарантируем сотрудникам одни из&nbsp;лучших условий труда, финансовую стабильность и&nbsp;карьерный рост.",
+  }
+
+  const indexGeographySection = {
+    header: "География <br>деятельности",
+    title: "<span class='section-header__blue-word'>Разрабатываем месторождения</span> <br>Наседкино, савкинское и<span>&nbsp;</span>Кочковское",
+    text: "Программа развития компании предусматривает развитие четырёх действующих объектов и&nbsp;введение в&nbsp;промышленную эксплуатацию новых месторождений в&nbsp;Забайкальском крае.",
+  }
+
+  const valuesSection = {
+    header: "Корпоративные <br>ценности",
+    title: "создаем возможности для <br>реализации потенциала людей, <br>идей и территорий",
+    text: "",
+  }
+
+  const historySection = {
+    header: "История",
+    title: "Ежегодно увеличиваем <br>темпы роста золотодобычи",
+    text: "Создаём мощный горноперерабатывающий кластер и ежегодно увеличиваем рост объёмов добычи и производства ценных металлов <br>в действующих месторождениях.",
+  }
+
+  const principlesSection = {
+    headerDesc: "Принципы <br>сотрудничества",
+    headerMob: "Принципы сотрудничества",
+    titleDesc: "текст в разработке. <br>этот заголовок может быть <br>длиной три строки текста",
+    titleMob: "текст заголовка <br>сейчас в разработке",
+  }
+
+  const teamSection = {
+    header: "команда <br>ООО «Монолит»",
+    title: "Ежегодно увеличиваем <br>темпы роста золотодобычи",
+    textDesc: "Создаём мощный горноперерабатывающий кластер и&nbsp;ежегодно увеличиваем рост объёмов добычи и&nbsp;производства ценных металлов в&nbsp;действующих месторождениях.",
+  }
+
+  const assetsSection = {
+    headerDesc: "Активы",
+    headerMob: "Показатели активов",
+    titleDesc: "текст в разработке. <br>этот заголовок может быть <br>длиной три строки текста",
+    titleMob: "текст в разработке. <br>этот заголовок может быть в три строки",
+  }
+
+  const conditionsSection = {
+    headerMob: "Пользовательское соглашение",
+    title: "Условия передачи <br>информации на сайте"
+  }
+
+mixin section-header(data)
+  .section-header&attributes(attributes)
+    .container
+      .section-header__header-wrp
+        if data.headerDesc
+          h2.caps-12.section-header__header.section-header__header--desc(data-sal="fade")!=data.headerDesc
+
+        if data.headerMob
+          h2.caps-12.section-header__header.section-header__header--mob(data-sal="fade")!=data.headerMob
+
+        if data.header
+          h2.caps-12.section-header__header(data-sal="fade")!=data.header
+
+      .section-header__title-wrp
+        if data.titleDesc
+          h3.heading-2-caps.section-header__title.section-header__title--desc(data-sal="slide-up" data-words-animation)
+            span.section-header__title-text!=data.titleDesc
+
+        if data.titleMob
+          h3.heading-2-caps.section-header__title.section-header__title--mob(data-sal="slide-up" data-words-animation)
+            span.section-header__title-text!=data.titleMob
+
+        if data.title
+          h3.heading-2-caps.section-header__title(data-sal="slide-up" data-words-animation)
+            span.section-header__title-text!=data.title
+
+        if data.textDesc
+          p.text-14.section-header__text.section-header__text--desc(data-sal="fade")!=data.textDesc
+
+        if data.textMob
+          p.text-14.section-header__text.section-header__text--mob(data-sal="fade")!=data.textMob
+
+        if data.text
+          p.text-14.section-header__text(data-sal="fade")!=data.text

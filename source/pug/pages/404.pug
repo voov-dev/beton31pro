@@ -1,0 +1,21 @@
+extends ../components/base/layout
+
+block variables
+  - const title = "404 - ООО «Монолит»" //- на страницах кроме главной используйте О нас — ProjectName
+  - const wrapperMods = ""
+  - const hasHeader = true
+  - const headerMods = "header--invert"
+  - const headerActivePage = ""
+  - const hasFooter = false
+  - const footerMods = ""
+  - const currentUrl = "page-not-found.html" //- для остальных страниц пишем пустую строку или индекс активного headerLinks
+
+block main
+  main
+    .page-overlay(data-page-overlay)
+    .page-404
+      .container
+        h1.heading-1-caps ошибка 404 <span>— <br>такой страницы не существует или она была удалена.</span> Воспользуйтесь меню <span>сайта</span> или перейдите на главную <span>страницу</span>
+        +btn({tag: "a", href:"index.html", text: "перейти на главную"}).caps-12.btn--dark-blue.btn--big
+
+block modals

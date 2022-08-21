@@ -4,7 +4,21 @@
   }
 }
 
+@mixin has-hover {
+  @media (hover: hover), screen and (min-width: 0\0) {
+    &:hover:not(.focus-visible),
+    &.focus-visible:focus {
+      @content;
+    }
+  }
+}
+
 // Desktop first
+@mixin vp-3199 {
+  @media (max-width: $vp-3200 - 1) {
+    @content;
+  }
+}
 
 @mixin vp-1919 {
   @media (max-width: $vp-1920 - 1) {

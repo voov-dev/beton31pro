@@ -1,0 +1,37 @@
+-
+  const aboutFactsData = {
+    factsList: [
+      {
+        total: 'Принимаем заявку',
+        details: 'Наши клиенты могут воспользоваться любым из удобных видов связи: Телефонный звонок, Электронная почта, Мессенджеры.',
+      },
+      {
+        total: 'Соглосование деталей',
+        details: `Мы обговариваем все условия поставки: Дату и удобное для клиента время, Промежуток подачи автотранспорта,Способ оплаты.`,
+      },
+      {
+        total: 'Доставка',
+        details: `Оператор делает предварительный звонок клиенту, идет погрузка автомобиля. По указанному адресу выезжает автобетоносмеситель.`,
+      },
+    ],
+  }
+
+mixin about-facts(props)
+  if props
+    section.about-facts(id="facts")&attributes(attributes)
+      +section-header(indexFactsSection)
+      .about-facts__body(data-facts-slider-container)
+        .about-facts__slider.swiper(data-facts-slider)
+          .swiper-wrapper
+            .swiper-slide.about-facts__item
+              +fact-item(props.factsList[0])
+              +fact-item(props.factsList[1])
+              +fact-item(props.factsList[2])
+          +slider-tools({
+            controlsMod: 'slider-controls--transparent',
+          })
+
+
+
+
+
